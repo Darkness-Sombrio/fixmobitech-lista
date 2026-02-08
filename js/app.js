@@ -109,8 +109,12 @@ function renderGames(list) {
         const isSel = selected.has(g[0]);
         const safeName = g[0].replace(/'/g, "\\'");
         const color = g[5]; 
-        const emoji = g[2].split(" ")[0]; 
-        const searchUrl = `https://www.google.com/search?tbm=isch&q=Nintendo+Switch+Cover+${encodeURIComponent(g[0])}`;
+        const emoji = g[2].split(" ")[0];
+        
+        // Dynamic placeholder using placehold.co
+        const bgColor = color.replace('#', '');
+        const shortName = g[0].length > 20 ? g[0].substring(0, 18) + '...' : g[0];
+        const coverUrl = `https://placehold.co/300x450/${bgColor}/fff?font=roboto&text=${encodeURIComponent(shortName)}`;
         
         let noSpaceClass = (!isSel && g[1] > currentFree) ? "no-space" : "";
 
@@ -118,10 +122,10 @@ function renderGames(list) {
         <div class="game-card ${isSel ? 'selected' : ''} ${noSpaceClass}" 
              onclick="toggleGame('${safeName}')">
             
-            <a href="${searchUrl}" target="_blank" class="cover-wrapper" onclick="event.stopPropagation()" style="text-decoration:none;color:inherit;">
-                <span class="cover-emoji">${emoji}</span>
-                <span class="cover-link">🖼️ VER PORTADA</span>
-            </a>
+            <div class="cover-wrapper">
+                <img src="${coverUrl}" class="cover-img" loading="lazy" alt="${g[0]}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="cover-fallback" style="display:none"><span>${emoji}</span></div>
+            </div>
 
             <div class="card-content">
                 <h3>${g[0]}</h3>

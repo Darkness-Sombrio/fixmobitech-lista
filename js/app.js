@@ -29,7 +29,6 @@ function updateSDCapacity() { updateStats(); applyFilters(); }
 
 function createRain() {
     const container = document.getElementById('rainContainer');
-    // NEON COLORS for the Joy-Cons
     const colors = ['#00f3ff', '#ff0055', '#4dff88', '#bd00ff', '#ffff4d'];
     
     for(let i=0; i<30; i++) {
@@ -37,7 +36,6 @@ function createRain() {
         const type = Math.random() > 0.5 ? 'left' : 'right';
         el.className = `joycon ${type}`; 
         
-        // 3D Structure
         const stick = document.createElement('div'); stick.className = 'analog-stick'; el.appendChild(stick);
         
         if(type === 'left') {
@@ -59,10 +57,9 @@ function createRain() {
         el.style.animationDuration = (Math.random() * 8 + 6) + 's';
         el.style.animationDelay = (Math.random() * 5) + 's';
         
-        // Dynamic Gradient based on Neon Palette
         const baseColor = colors[Math.floor(Math.random() * colors.length)];
         el.style.background = `linear-gradient(135deg, ${baseColor} 0%, #333 100%)`;
-        el.style.boxShadow = `0 0 10px ${baseColor}`; // Neon Glow
+        el.style.boxShadow = `0 0 10px ${baseColor}`; 
         
         const scale = Math.random() * 0.4 + 0.5;
         el.style.transform = `scale(${scale})`;
@@ -194,7 +191,11 @@ function renderReviewList() {
     container.innerHTML = html;
 }
 
-function openWhatsAppModal() { if(!selected.size) return alert("Selecciona juegos primero."); document.getElementById('whatsappModal').classList.add('active'); }
+function openWhatsAppModal() { 
+    if(!selected.size) return alert("Selecciona juegos primero."); 
+    document.getElementById('whatsappModal').classList.add('active');
+    document.getElementById('clientName').focus(); // Auto-focus input
+}
 function closeModal() { document.getElementById('whatsappModal').classList.remove('active'); }
 
 function sendWhatsApp() {
@@ -203,6 +204,8 @@ function sendWhatsApp() {
     const preset = document.getElementById('sdPreset').value;
     const sdReal = SD_PRESETS[preset] || 119;
     
+    if(!name) return alert("Por favor escribe tu Nombre."); // Basic Validation
+
     let listText = "";
     [...selected].sort().forEach(n => {
         const g = GAMES_DATA.find(x => x[0] === n);

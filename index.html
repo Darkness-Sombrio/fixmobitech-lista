@@ -84,7 +84,8 @@
         <p>Desarrollado por <a href="https://www.facebook.com/profile.php?id=100092204889914" target="_blank" style="color:var(--neon-blue);text-decoration:none;font-weight:bold">FixMobiTech</a></p>
     </footer>
 
-    <button class="fab-whatsapp" onclick="openWhatsAppModal()">🚀</button>
+    <!-- UPDATED: Pill Button with Text -->
+    <button class="fab-whatsapp" onclick="openWhatsAppModal()">� ENVIAR LISTA</button>
 </div>
 
 <!-- Modal Review -->
@@ -96,17 +97,23 @@
     </div>
 </div>
 
-<!-- Modal WhatsApp -->
+<!-- Modal WhatsApp (Inputs Verified) -->
 <div class="modal" id="whatsappModal">
     <div class="modal-content">
-        <h2 style="color:var(--neon-blue); font-family:'Orbitron'; margin-bottom:15px">CONFIRMAR</h2>
-        <input type="text" class="controls-input" id="clientName" placeholder="Nombre" style="margin-bottom:10px">
-        <select class="controls-select" id="clientModel" style="margin-bottom:10px">
-            <option value="V1/V2">Switch Normal</option>
+        <h2 style="color:var(--neon-blue); font-family:'Orbitron'; margin-bottom:15px">COMPLETAR PEDIDO</h2>
+        <p style="color:#aaa; font-size:0.8rem; margin-bottom:15px">Ingresa tus datos para enviarnos la lista por WhatsApp.</p>
+        
+        <label class="input-label" style="text-align:left">TU NOMBRE:</label>
+        <input type="text" class="controls-input" id="clientName" placeholder="Ej: Juan Perez" style="margin-bottom:10px">
+        
+        <label class="input-label" style="text-align:left">MODELO DE SWITCH:</label>
+        <select class="controls-select" id="clientModel" style="margin-bottom:15px">
+            <option value="V1/V2">Switch Normal (V1/V2)</option>
             <option value="OLED">Switch OLED</option>
             <option value="Lite">Switch Lite</option>
         </select>
-        <button onclick="sendWhatsApp()" style="background:var(--neon-blue); border:none; padding:12px; width:100%; font-weight:bold; cursor:pointer; border-radius:5px; color:#000;">ENVIAR PEDIDO</button>
+        
+        <button onclick="sendWhatsApp()" style="background:var(--neon-blue); border:none; padding:12px; width:100%; font-weight:bold; cursor:pointer; border-radius:5px; color:#000;">ENVIAR AHORA 🚀</button>
         <button onclick="closeModal()" style="background:transparent; border:none; color:#888; margin-top:10px; cursor:pointer;">Cancelar</button>
     </div>
 </div>

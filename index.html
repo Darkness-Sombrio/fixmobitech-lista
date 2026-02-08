@@ -69,11 +69,23 @@
 
 <div class="modal" id="whatsappModal">
     <div class="modal-content">
-        <h3>🚀 Enviar Pedido</h3>
-        <p style="color:#aaa;">Ingresa tu nombre para identificar tu lista</p>
-        <input type="text" class="modal-input" id="clientName" placeholder="Tu Nombre Aquí">
-        <button class="btn-confirm" onclick="sendWhatsApp()">ENVIAR AHORA 📤</button>
-        <button class="btn" style="background:transparent; border:none; color:#888; margin-top:20px; cursor:pointer" onclick="closeModal()">Cancelar</button>
+        <h3>🚀 Datos del Pedido</h3>
+        
+        <span class="modal-label">Nombre del Cliente</span>
+        <input type="text" class="modal-input" id="clientName" placeholder="Ej: Juan Pérez">
+        
+        <span class="modal-label">Modelo de Switch</span>
+        <select class="modal-select" id="clientModel">
+            <option value="V1/V2 (Normal)">V1 / V2 (Normal)</option>
+            <option value="OLED">OLED</option>
+            <option value="Lite">Lite</option>
+        </select>
+        
+        <span class="modal-label">Color de Consola</span>
+        <input type="text" class="modal-input" id="clientColor" placeholder="Ej: Neón (Roja/Azul), Gris, Blanca...">
+        
+        <button class="btn-confirm" onclick="sendWhatsApp()">ENVIAR WHATSAPP 📤</button>
+        <button class="btn" style="background:transparent; border:none; color:#888; cursor:pointer" onclick="closeModal()">Cancelar</button>
     </div>
 </div>
 

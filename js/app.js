@@ -4,9 +4,9 @@ const GAMES_DATA = [["Mortal Kombat 11", 32.5, "🥊 Pelea", 2019], ["Dragon Que
 const PHONE_NUMBER = "528115139018";
 
 let GAMES = GAMES_DATA;
-let filteredGames = GAMES_DATA; // Para navegación en lista filtrada
+let filteredGames = GAMES_DATA;
 let selected = new Set();
-let focusedIndex = -1; // Índice visual para teclado
+let focusedIndex = -1;
 
 function init() {
     if(GAMES && GAMES.length > 0) {
@@ -19,8 +19,6 @@ function init() {
     document.getElementById('search').addEventListener('input', (e) => filterGames(e.target.value));
     document.getElementById('sdSize').addEventListener('input', updateStats);
     document.addEventListener('contextmenu', e => e.preventDefault());
-    
-    // Listeners de Teclado
     document.addEventListener('keydown', handleKeyNavigation);
 }
 
@@ -28,7 +26,6 @@ function handleKeyNavigation(e) {
     const cards = document.querySelectorAll('.game-card');
     if(cards.length === 0) return;
     
-    // Moverse
     if (e.key === 'ArrowRight') focusedIndex++;
     else if (e.key === 'ArrowLeft') focusedIndex--;
     else if (e.key === 'ArrowDown') focusedIndex += getColumnsCount();
@@ -40,9 +37,8 @@ function handleKeyNavigation(e) {
             toggleGame(name);
         }
         return;
-    } else return; // Otras teclas
+    } else return;
 
-    // Circular loop
     if (focusedIndex < 0) focusedIndex = cards.length - 1;
     if (focusedIndex >= cards.length) focusedIndex = 0;
     
@@ -51,9 +47,8 @@ function handleKeyNavigation(e) {
 
 function getColumnsCount() {
     const grid = document.getElementById('gameList');
-    const colWidth = 280; // minmax en CSS
+    const colWidth = 280;
     const gap = 15;
-    // Estimación aproximada (no perfecta pero funcional)
     return Math.floor((grid.offsetWidth + gap) / (colWidth + gap)) || 1;
 }
 
@@ -91,7 +86,7 @@ function renderGames(list) {
         </div>`;
     }).join('');
     
-    focusedIndex = -1; // Reset focus on render
+    focusedIndex = -1;
     updateStats();
 }
 
@@ -156,31 +151,44 @@ function sendWhatsApp() {
     const name = document.getElementById('clientName').value.trim();
     if(!name) return alert("Por favor escribe tu nombre.");
     
+    const model = document.getElementById('clientModel').value;
+    const color = document.getElementById('clientColor').value || "No especificado";
     const sd = document.getElementById('sdSize').value;
+    
     let total = 0;
     let listText = "";
     
+    // Ordenar alfabéticamente
     const selList = [...selected].sort();
     
     selList.forEach((n, i) => {
         const g = GAMES.find(x => x[0] === n);
         total += g[1];
-        // Formato Checklist para Técnico (Cuadrado vacío)
-        listText += `⬜ ${n} (${g[1]} GB)%0A`;
+        // Bullets simples para evitar problemas de encoding
+        listText += `[ ] ${n} (${g[1]} GB)\n`;
     });
     
     const free = parseFloat(sd) - total;
     
-    const msg = `🎮 *ORDEN DE INSTALACIÓN*%0A` +
-                `👤 Cliente: *${name}*%0A` +
-                `💾 Capacidad SD: ${sd} GB%0A%0A` +
-                `*LISTA DE JUEGOS A INSTALAR:*%0A` +
-                listText + 
-                `%0A📊 Total: ${selected.size} juegos` +
-                `%0A📦 Peso Total: ${total.toFixed(1)} GB` +
-                `%0A${free >= 0 ? '✅ Espacio Suficiente' : '⚠️ FALTA ESPACIO (' + free.toFixed(1) + ' GB)'}`;
+    // Usamos \n para saltos de línea explícitos antes de encode
+    // Emojis básicos que suelen funcionar bien
+    const rawMsg = 
+`🎮 *ORDEN FIXMOBITECH* 🎮
+👤 *Cliente:* ${name}
+📱 *Modelo:* ${model}
+🎨 *Color:* ${color}
+💾 *SD:* ${sd} GB
 
-    window.open(`https://wa.me/${PHONE_NUMBER}?text=${msg}`, '_blank');
+*LISTA A INSTALAR:*
+${listText}
+📊 *Total:* ${selected.size} juegos
+📦 *Peso:* ${total.toFixed(1)} GB
+${free >= 0 ? '✅ Espacio OK' : '❌ FALTA ESPACIO (' + free.toFixed(1) + ' GB)'}`;
+
+    // Encode URI Component para asegurar emojis y saltos de línea
+    const encodedMsg = encodeURIComponent(rawMsg);
+
+    window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodedMsg}`, '_blank');
     closeModal();
 }
 

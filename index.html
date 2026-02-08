@@ -3,110 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FixMobiTech - Catálogo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <title>FixMobiTech - Premium Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<div class="rain-container" id="rainContainer"></div>
+
 <div class="container">
     <header>
         <h1>FixMobiTech</h1>
-        <p class="subtitle">CATÁLOGO INTERACTIVO</p>
+        <p class="subtitle">CATÁLOGO NINTENDO SWITCH</p>
+        <a href="https://www.facebook.com/profile.php?id=61566827606526" target="_blank" class="btn-fb">👍 Síguenos en Facebook</a>
     </header>
 
-    <!-- Stats -->
-    <div class="stats-bar">
+    <div class="stats-bar" onclick="viewOrder()">
         <div class="stat-item">
             <span class="stat-lbl">Juegos</span>
             <span class="stat-val" id="selectedCount" style="color:var(--neon-blue)">0</span>
         </div>
         <div class="stat-item">
-            <span class="stat-lbl">Peso Juegos</span>
-            <span class="stat-val" id="totalSize" style="color:var(--neon-pink)">0.0 GB</span>
+            <span class="stat-lbl">Peso</span>
+            <span class="stat-val" id="totalSize" style="color:#ff0055">0.0 GB</span>
         </div>
         <div class="stat-item">
-            <span class="stat-lbl">Libre SD</span>
-            <span class="stat-val" id="freeSpace" style="color:var(--neon-green)">128.0 GB</span>
+            <span class="stat-lbl">Libre</span>
+            <span class="stat-val" id="freeSpace" style="color:#4dff88">128.0 GB</span>
+        </div>
+        <div style="grid-column:1/-1; text-align:center; font-size:0.7rem; color:#aaa; margin-top:5px">
+            (Toca aquí para ver tu lista)
         </div>
     </div>
     
-    <!-- Progress User -->
     <div class="progress-wrapper">
         <div class="progress-container">
-            <div class="progress-fill" id="sdProgress"></div>
+            <div class="progress-fill" id="sdProgress" style="width:100%"></div>
         </div>
         <div class="progress-legend">
-            <div class="legend-item"><span class="dot dot-sys"></span> Sistema (17GB)</div>
-            <div id="statsText" style="color:#fff;">Calculando...</div>
-            <div class="legend-item"><span class="dot dot-games"></span> Juegos</div>
+            <div style="display:flex;align-items:center"><span class="dot" style="background:#555"></span>Sistema</div>
+            <div id="statsText" style="font-size:0.7rem">Calc...</div>
+            <div style="display:flex;align-items:center"><span class="dot" style="background:#00f3ff"></span>Juegos</div>
         </div>
     </div>
 
-    <!-- Controls -->
-    <div class="config-grid">
-        <div class="input-group">
-            <label class="input-label">CAPACIDAD SD (GB)</label>
-            <input type="number" class="controls-input" id="sdSize" value="128">
+    <!-- Storage Config Row -->
+    <div style="display:flex; gap:10px; margin-bottom:15px; background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
+        <div style="flex:1">
+            <label class="input-label">MEMORIA REAL</label>
+            <select class="controls-select" id="sdPreset">
+                <option value="64">64 GB (58GB Real)</option>
+                <option value="128" selected>128 GB (119GB Real)</option>
+                <option value="256">256 GB (238GB Real)</option>
+                <option value="512">512 GB (476GB Real)</option>
+                <option value="1024">1 TB (930GB Real)</option>
+            </select>
         </div>
-        <div class="input-group">
+        <div style="flex:1">
+            <label class="input-label">OCUPADO SISTEMA (GB)</label>
+            <input type="number" class="controls-input" id="systemSpace" value="17">
+        </div>
+    </div>
+
+    <div class="config-grid">
+        <div>
             <label class="input-label">ORDENAR</label>
             <select class="controls-select" id="sortSelect">
-                <option value="name_asc">Nombre (A-Z)</option>
-                <option value="name_desc">Nombre (Z-A)</option>
-                <option value="size_desc">Peso (Mayor)</option>
-                <option value="size_asc">Peso (Menor)</option>
+                <option value="size_desc" selected>Peso (Mayor a Menor)</option>
+                <option value="size_asc">Peso (Menor a Mayor)</option>
+                <option value="name_asc">Nombre (A - Z)</option>
+                <option value="name_desc">Nombre (Z - A)</option>
             </select>
         </div>
-        <div class="input-group">
+        <div style="grid-column: span 2">
             <label class="input-label">CATEGORÍA</label>
-            <select class="controls-select" id="categorySelect">
-                <!-- Dynamic -->
-            </select>
+            <select class="controls-select" id="categorySelect"></select>
         </div>
     </div>
 
-    <div class="search-box">
-        <input type="text" class="search-input-big" id="search" placeholder="🔍 Buscar Juego...">
+    <div style="margin-bottom:20px; position:relative">
+         <input type="text" class="controls-input" id="search" placeholder="🔍 Buscar juego..." style="padding-left:40px; text-align:left;">
+         <span style="position:absolute; left:15px; top:12px; font-size:1.2rem;">🎮</span>
     </div>
 
-    <div class="game-list" id="gameList">
-        <!-- Games -->
-    </div>
+    <div class="game-list" id="gameList"></div>
     
-    <footer style="text-align:center; padding:30px; color:#555; font-size:0.8rem;">
-        <p>© 2026 FixMobiTech | * Pesos aproximados</p>
-        <p style="color:#888; margin-top:5px;">Chatbot: Próximamente Disponible 🤖</p>
+    <footer style="text-align:center; padding:30px; font-size:0.8rem; color:#888;">
+        <p>© 2026 FixMobiTech | *Pesos aproximados</p>
+        <p style="margin-top:5px; color:#555">Chatbot: Próximamente Disponible 🤖</p>
     </footer>
 
-    <button class="fab-whatsapp" onclick="openModal()">🚀</button>
+    <button class="fab-whatsapp" onclick="openWhatsAppModal()">🚀</button>
 </div>
 
-<!-- Modal -->
+<!-- Modal Review List -->
+<div class="modal" id="reviewModal">
+    <div class="modal-content">
+        <h2 style="color:#00f3ff; font-family:'Orbitron'; margin-bottom:15px">MI LISTA</h2>
+        <div class="modal-body" id="reviewList" style="max-height:300px;">
+            <!-- Items -->
+        </div>
+        <button onclick="closeReview()" style="background:#444; border:none; color:#fff; padding:10px; width:100%; cursor:pointer; border-radius:5px">Cerrar</button>
+    </div>
+</div>
+
+<!-- Modal WhatsApp -->
 <div class="modal" id="whatsappModal">
     <div class="modal-content">
-        <h3 class="modal-title">FINALIZAR PEDIDO</h3>
+        <h2 style="color:#00f3ff; font-family:'Orbitron'; margin-bottom:15px">CONFIRMAR</h2>
+        <input type="text" class="controls-input" id="clientName" placeholder="Nombre del Cliente" style="margin-bottom:10px">
+        <select class="controls-select" id="clientModel" style="margin-bottom:10px">
+            <option value="V1/V2">Switch Normal</option>
+            <option value="OLED">Switch OLED</option>
+            <option value="Lite">Switch Lite</option>
+        </select>
+        <input type="text" class="controls-input" id="clientColor" placeholder="Color de Joy-Cons" style="margin-bottom:20px">
         
-        <div class="input-group">
-            <label class="input-label">CLIENTE</label>
-            <input type="text" class="controls-input" id="clientName" placeholder="Nombre completo">
-        </div>
-        
-        <div class="input-group">
-            <label class="input-label">CONSOLA</label>
-            <div style="display:flex; gap:10px;">
-                <select class="controls-select" id="clientModel">
-                    <option value="V1/V2">Normal</option>
-                    <option value="OLED">OLED</option>
-                    <option value="Lite">Lite</option>
-                </select>
-                <input type="text" class="controls-input" id="clientColor" placeholder="Color" style="width:50%">
-            </div>
-        </div>
-        
-        <button class="btn-confirm" onclick="sendWhatsApp()">ENVIAR POR WHATSAPP</button>
-        <button class="btn-confirm" style="background:transparent; border:1px solid #444; color:#888" onclick="closeModal()">CANCELAR</button>
+        <button onclick="sendWhatsApp()" style="background:#00f3ff; border:none; padding:12px; width:100%; font-weight:bold; cursor:pointer; border-radius:5px">ENVIAR PEDIDO</button>
+        <button onclick="closeModal()" style="background:transparent; border:none; color:#888; margin-top:10px; cursor:pointer">Cancelar</button>
     </div>
 </div>
 

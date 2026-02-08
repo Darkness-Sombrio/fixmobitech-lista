@@ -14,6 +14,10 @@
     <header>
         <h1>FixMobiTech</h1>
         <p class="subtitle">Catálogo Interactivo Nintendo Switch</p>
+        <p class="welcome-msg">¡Bienvenido! Selecciona tus juegos favoritos para armar tu paquete.</p>
+        <div style="margin-top:10px; font-size:0.85rem; color:#888;">
+            <span style="color:var(--neon-green)">●</span> Chatbot disponible 24/7 (WhatsApp/Facebook)
+        </div>
     </header>
 
     <div class="stats-bar">
@@ -23,12 +27,17 @@
         </div>
         <div class="stat-item">
             <span class="stat-val text-pink" id="totalSize" style="color:var(--neon-pink)">0.0 GB</span>
-            <span class="stat-lbl">Peso Total</span>
+            <span class="stat-lbl">Peso Aprox.</span>
         </div>
         <div class="stat-item">
             <span class="stat-val text-green" id="freeSpace" style="color:var(--neon-green)">128.0 GB</span>
             <span class="stat-lbl">Libre en SD</span>
         </div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-fill" id="sdProgress"></div>
+        <div class="progress-text" id="sdText" style="color:#fff;">0% Ocupado</div>
     </div>
 
     <div class="sd-config">
@@ -44,6 +53,7 @@
             <input type="number" class="search-input" id="sdSize" value="128" style="width:100px; padding:8px;">
             <span>GB</span>
         </div>
+        <p style="margin-top:10px;color:#666;font-size:0.8rem;">* Los pesos mostrados son aproximados y pueden variar según actualizaciones y DLCs.</p>
     </div>
 
     <div class="controls-container">
@@ -65,7 +75,7 @@
         </div>
 
         <button class="btn-whatsapp" onclick="openModal()">
-            <span>📱</span> ENVIAR PEDIDO
+            <span>📱</span> VERIFICAR PEDIDO Y ENVIAR
         </button>
     </div>
 
@@ -78,6 +88,7 @@
     <footer style="text-align:center; padding:40px 0 20px; color:#555; font-size:0.8rem; letter-spacing:1px; border-top:1px solid #222; margin-top:40px">
         <p>Desarrollado por <span style="color:var(--neon-blue)">Roberto Carlos Flores Castillo</span></p>
         <p style="margin-top:5px">© 2026 FixMobiTech - All Rights Reserved</p>
+        <p style="margin-top:5px; color:#444;">Facilitando tu lista de juegos. ¡Disfruta la estancia!</p>
     </footer>
 </div>
 

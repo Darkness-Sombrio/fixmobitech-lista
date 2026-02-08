@@ -183,10 +183,10 @@ function closeReview() { document.getElementById('reviewModal').classList.remove
 
 function renderReviewList() {
     const container = document.getElementById('reviewList');
-    if(!selected.size) { container.innerHTML = '<span style="color:#666">Lista vacía.</span>'; return; }
+    if(!selected.size) { container.innerHTML = '<span style="color:#888">No has seleccionado juegos aún.</span>'; return; }
     let html = '';
     [...selected].sort().forEach(name => {
-        html += `<div class="review-item"><span>${name}</span><span class="btn-delete" onclick="toggleGame('${name.replace(/'/g, "\\'") }'); renderReviewList()">✕</span></div>`;
+        html += `<div class="review-item"><span>${name}</span><span class="btn-delete" onclick="toggleGame('${name.replace(/'/g, "\\'") }'); renderReviewList()">❌</span></div>`;
     });
     container.innerHTML = html;
 }

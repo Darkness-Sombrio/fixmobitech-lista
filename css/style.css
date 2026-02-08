@@ -18,7 +18,6 @@ body {
     font-family: 'Rajdhani', sans-serif;
 }
 
-/* Starfield / Grid Background */
 body::before {
     content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background-image: 
@@ -32,7 +31,7 @@ body::before {
     pointer-events: none; z-index: 0; overflow: hidden;
 }
 
-/* --- JOY-CON PRO 3D (NEON EDITION) --- */
+/* 3D JoyCons (Neon) */
 .joycon {
     position: absolute; top: -200px;
     width: 60px; height: 140px; 
@@ -216,11 +215,10 @@ h1 {
     white-space: nowrap; width: 120%; text-align: center;
 }
 
-/* Updated FAB Style - PILL SHAPE */
 .fab-whatsapp { 
     position: fixed; bottom: 30px; right: 30px; 
     background: linear-gradient(45deg, #25D366, #128C7E);
-    height: 60px; padding: 0 25px; /* Pill shape */
+    height: 60px; padding: 0 25px;
     border-radius: 30px; 
     display: flex; justify-content: center; align-items: center; gap: 10px;
     box-shadow: 0 5px 25px rgba(0,0,0,0.6); cursor: pointer; z-index: 100; transition: 0.3s;
@@ -237,3 +235,23 @@ h1 {
 }
 @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* MISSING STYLES RESTORED */
+.review-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #fff; font-size: 0.95rem; text-align: left;
+}
+.review-item:last-child { border-bottom: none; }
+.btn-delete { 
+    color: #ff4444; font-weight: bold; cursor: pointer; 
+    padding: 2px 8px; border-radius: 3px; background: rgba(255,0,0,0.1);
+}
+.btn-delete:hover { background: rgba(255,0,0,0.3); }
+
+/* Warning Text */
+.warning-text {
+    color: #ffaa00; font-size: 0.8rem; margin: 10px 0; font-weight: bold;
+    background: rgba(255, 170, 0, 0.1); padding: 8px; border-radius: 5px;
+    border: 1px solid rgba(255, 170, 0, 0.3);
+}

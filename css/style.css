@@ -125,6 +125,13 @@ h1 {
     box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
 }
 
+.game-card.focused {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.4);
+    transform: translateY(-5px);
+    z-index: 10;
+}
+
 .game-card::before {
     content: ''; position: absolute; top:0; left:0; width: 4px; height: 100%; background: #333; transition: 0.3s;
 }

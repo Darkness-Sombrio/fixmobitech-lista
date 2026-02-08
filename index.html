@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FixMobiTech - SYSTEM V2</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Rajdhani:wght@500;700&family=Courier+New&display=swap" rel="stylesheet">
+    <title>FixMobiTech - Catálogo Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,34 +13,35 @@
 
 <div class="container">
     <header>
-        <h1 data-text="FIXMOBITECH">FIXMOBITECH</h1>
-        <p class="subtitle">SYSTEM.STATUS: ONLINE // READY_TO_HACK</p>
-        <br>
-        <a href="https://www.facebook.com/profile.php?id=100092204889914" target="_blank" class="btn-fb">🌐 FOLLOW_US.EXE</a>
+        <h1>FixMobiTech</h1>
+        <p class="subtitle">CATÁLOGO NINTENDO SWITCH</p>
+        <a href="https://www.facebook.com/profile.php?id=100092204889914" target="_blank" class="btn-fb">👍 Síguenos en Facebook</a>
     </header>
 
     <div class="stats-bar">
         <div class="stat-item">
-            <span class="stat-lbl">JUEGOS</span>
-            <span class="stat-val" id="selectedCount">0</span>
+            <span class="stat-lbl">Juegos</span>
+            <span class="stat-val" id="selectedCount" style="color:var(--neon-blue)">0</span>
         </div>
         <div class="stat-item">
-            <span class="stat-lbl">PESO</span>
-            <span class="stat-val" id="totalSize">0.0 GB</span>
+            <span class="stat-lbl">Peso</span>
+            <span class="stat-val" id="totalSize" style="color:#ff0055">0.0 GB</span>
         </div>
         <div class="stat-item">
-            <span class="stat-lbl">LIBRE</span>
-            <span class="stat-val" id="freeSpace">128.0 GB</span>
+            <span class="stat-lbl">Libre</span>
+            <span class="stat-val" id="freeSpace" style="color:#4dff88">128.0 GB</span>
         </div>
     </div>
     
-    <div class="progress-container">
-        <div class="progress-fill" id="sdProgress" style="width:100%"></div>
+    <div class="progress-wrapper">
+        <div class="progress-container">
+            <div class="progress-fill" id="sdProgress" style="width:100%"></div>
+        </div>
     </div>
     
     <button class="btn-review-big" onclick="viewOrder()">📋 VER MI LISTA / EDITAR</button>
 
-    <div style="display:flex; gap:10px; margin-bottom:15px; background:#111; padding:10px; border:1px solid #333;">
+    <div style="display:flex; gap:10px; margin-bottom:15px; background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
         <div style="flex:1">
             <label class="input-label">MEMORIA REAL</label>
             <select class="controls-select" id="sdPreset">
@@ -52,7 +53,7 @@
             </select>
         </div>
         <div style="flex:1">
-            <label class="input-label">SISTEMA (GB)</label>
+            <label class="input-label">OCUPADO SISTEMA (GB)</label>
             <input type="number" class="controls-input" id="systemSpace" value="17">
         </div>
     </div>
@@ -74,13 +75,13 @@
     </div>
 
     <div style="margin-bottom:20px; position:relative">
-         <input type="text" class="controls-input" id="search" placeholder="🔍 SEARCH_DB..." style="padding-left:40px;">
+         <input type="text" class="controls-input" id="search" placeholder="🔍 Buscar juego..." style="padding-left:40px;">
     </div>
 
     <div class="game-list" id="gameList"></div>
     
-    <footer style="text-align:center; padding:30px; font-size:0.8rem; color:#666;">
-        <p>DECODED BY <span style="color:var(--cyber-yellow)">FIXMOBITECH</span> // END_OF_FILE</p>
+    <footer style="text-align:center; padding:30px; font-size:0.8rem; color:#888;">
+        <p>Desarrollado por <a href="https://www.facebook.com/profile.php?id=100092204889914" target="_blank" style="color:var(--neon-blue);text-decoration:none;font-weight:bold">FixMobiTech</a></p>
     </footer>
 
     <button class="fab-whatsapp" onclick="openWhatsAppModal()">🚀</button>
@@ -89,24 +90,24 @@
 <!-- Modal Review -->
 <div class="modal" id="reviewModal">
     <div class="modal-content">
-        <h2 style="color:var(--cyber-yellow); font-family:'Orbitron'; margin-bottom:15px">DATABASE_LIST</h2>
-        <div class="modal-body" id="reviewList" style="max-height:300px;"></div>
-        <button onclick="closeReview()" style="background:#333; border:none; color:#fff; padding:10px; width:100%; cursor:pointer;">EXIT</button>
+        <h2 style="color:var(--neon-blue); font-family:'Orbitron'; margin-bottom:15px">MI LISTA</h2>
+        <div class="modal-body" id="reviewList" style="max-height:300px; overflow-y:auto; text-align:left; padding:10px; background:rgba(0,0,0,0.2); border-radius:5px; margin-bottom:10px;"></div>
+        <button onclick="closeReview()" style="background:#444; border:none; color:#fff; padding:10px; width:100%; cursor:pointer; border-radius:5px">Cerrar</button>
     </div>
 </div>
 
 <!-- Modal WhatsApp -->
 <div class="modal" id="whatsappModal">
     <div class="modal-content">
-        <h2 style="color:var(--cyber-yellow); font-family:'Orbitron'; margin-bottom:15px">CONFIRM_UPLOAD</h2>
-        <input type="text" class="controls-input" id="clientName" placeholder="CLIENT_ID" style="margin-bottom:10px">
+        <h2 style="color:var(--neon-blue); font-family:'Orbitron'; margin-bottom:15px">CONFIRMAR</h2>
+        <input type="text" class="controls-input" id="clientName" placeholder="Nombre" style="margin-bottom:10px">
         <select class="controls-select" id="clientModel" style="margin-bottom:10px">
             <option value="V1/V2">Switch Normal</option>
             <option value="OLED">Switch OLED</option>
             <option value="Lite">Switch Lite</option>
         </select>
-        <button onclick="sendWhatsApp()" style="background:var(--cyber-yellow); border:none; padding:12px; width:100%; font-weight:bold; cursor:pointer; color:#000;">EXECUTE ORDER 66</button>
-        <button onclick="closeModal()" style="background:transparent; border:none; color:#888; margin-top:10px; cursor:pointer;">ABORT</button>
+        <button onclick="sendWhatsApp()" style="background:var(--neon-blue); border:none; padding:12px; width:100%; font-weight:bold; cursor:pointer; border-radius:5px; color:#000;">ENVIAR PEDIDO</button>
+        <button onclick="closeModal()" style="background:transparent; border:none; color:#888; margin-top:10px; cursor:pointer;">Cancelar</button>
     </div>
 </div>
 

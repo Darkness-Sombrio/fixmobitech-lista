@@ -178,41 +178,76 @@ h1 {
 }
 .controls-input:focus, .controls-select:focus { border-color: var(--neon-blue); }
 
-.game-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
-.game-card { 
-    background: var(--card-bg); padding: 5px; border-radius: 10px; 
-    border-left: 5px solid #444; 
-    cursor: pointer; transition: 0.2s; position: relative;
-    display: flex; align-items: stretch; overflow: hidden;
-    animation: fadeIn 0.5s ease;
+.game-list { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 15px; 
 }
-.game-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-.game-card.selected { background: rgba(50, 50, 70, 0.95); box-shadow: 0 0 15px rgba(255,255,255,0.1); }
+.game-card { 
+    background: var(--card-bg); 
+    border-radius: 10px; 
+    overflow: hidden;
+    cursor: pointer; 
+    transition: 0.2s; 
+    position: relative;
+    display: flex; 
+    flex-direction: column; /* Vertical Box Art */
+    animation: fadeIn 0.5s ease;
+    border: 1px solid #333;
+    height: 100%;
+}
+.game-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.6); z-index: 10; }
+.game-card.selected { box-shadow: 0 0 15px var(--neon-blue); border-color: var(--neon-blue); }
 
-.card-content { flex: 1; padding: 10px; display: flex; flex-direction: column; justify-content: center; }
-.game-info h3 { font-size: 1rem; margin-bottom: 5px; color: #eee; font-weight: 700; }
-.game-meta { font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
-.game-cat-badge { padding: 2px 8px; border-radius: 10px; color: #000; font-weight: bold; font-size: 0.7rem; text-transform: uppercase; }
-.game-size { font-family: 'Orbitron'; font-weight: bold; font-size: 1rem; }
+.cover-placeholder {
+    width: 100%;
+    aspect-ratio: 2/3; /* Switch Box ratio */
+    background: linear-gradient(135deg, #222, #111);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-bottom: 3px solid; /* Border color set inline */
+}
+.cover-placeholder span {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+.cover-link {
+    font-size: 0.8rem; color: #fff; text-decoration: none; 
+    background: rgba(0,0,0,0.6); padding: 5px 10px; border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: 0.2s;
+}
+.cover-link:hover { background: #fff; color: #000; }
 
-.checkbox { width: 40px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); border-left: 1px solid rgba(255,255,255,0.05); }
-.check-circle { width: 24px; height: 24px; border: 2px solid #666; border-radius: 50%; transition: 0.2s; display: grid; place-items: center; }
+.card-content { padding: 10px; text-align: center; flex: 1; display:flex; flex-direction:column; justify-content:space-between; }
+.game-info h3 { font-size: 0.9rem; margin-bottom: 5px; color: #fff; font-weight: 700; line-height: 1.2; }
+.game-meta { font-size: 0.8rem; display: flex; justify-content: center; align-items: center; gap: 5px; margin-top: auto; }
+.game-cat-badge { padding: 2px 6px; border-radius: 4px; color: #000; font-weight: bold; font-size: 0.65rem; text-transform: uppercase; }
+.game-size { font-family: 'Orbitron'; font-weight: bold; font-size: 0.8rem; color: #bbb; }
+
+.checkbox { 
+    position: absolute; top: 10px; right: 10px;
+    width: 30px; height: 30px; 
+    background: rgba(0,0,0,0.6); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; 
+    backdrop-filter: blur(2px);
+}
+.check-circle { width: 20px; height: 20px; border: 2px solid #fff; border-radius: 50%; transition: 0.2s; display: grid; place-items: center; }
 .game-card.selected .check-circle { background: var(--neon-blue); border-color: var(--neon-blue); }
-.check-circle::after { content: '✓'; color: #000; font-weight: bold; font-size: 14px; display: none; }
+.check-circle::after { content: '✓'; color: #000; font-weight: bold; font-size: 12px; display: none; }
 .game-card.selected .check-circle::after { display: block; }
 
-.game-card.no-space {
-    opacity: 0.8; pointer-events: none;
-    border: 2px solid var(--neon-pink) !important;
-}
+.game-card.no-space { opacity: 0.5; filter: grayscale(100%); pointer-events: none; }
+
 .game-card.no-space::after {
-    content: '⚠️ FALTA ESPACIO';
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%) rotate(-10deg);
-    background: repeating-linear-gradient(45deg, var(--neon-pink), var(--neon-pink) 10px, #000 10px, #000 20px);
-    color: #fff; font-weight: bold; padding: 5px 20px; font-size: 0.9rem;
+    content: 'LLENO';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg);
+    background: #ff0055; color: #fff; font-weight: bold; padding: 5px 15px; 
     border: 2px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.8);
-    white-space: nowrap; width: 120%; text-align: center;
+    font-size: 1rem;
 }
 
 .fab-whatsapp { 

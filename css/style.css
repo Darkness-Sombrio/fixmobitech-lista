@@ -14,27 +14,52 @@ body {
     padding-bottom: 80px; 
     overflow-x: hidden;
     position: relative;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 /* Joy-Con Rain Animation Background */
 .rain-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: 0; overflow: hidden;
+    filter: blur(2px);
 }
 
 .joycon {
-    position: absolute; top: -50px;
-    width: 20px; height: 50px;
-    border-radius: 10px 10px 30px 30px;
+    position: absolute; top: -100px;
+    width: 30px; height: 80px;
+    border-radius: 15px 15px 30px 30px; /* Slight curve at top */
     opacity: 0.3;
     animation: fall linear infinite;
+    /* 3D visual */
+    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.4), inset 2px 2px 5px rgba(255,255,255,0.2);
 }
-.joycon.left { border-radius: 20px 0 0 20px; } 
+
+/* Joy-Con Analog Stick */
+.joycon::before {
+    content: ''; position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
+    width: 14px; height: 14px; background: rgba(20,20,20, 0.6);
+    border-radius: 50%; border: 1px solid rgba(0,0,0,0.8);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Joy-Con Buttons (simplified group) */
+.joycon::after {
+    content: ''; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    width: 6px; height: 6px; background: rgba(0,0,0,0.5); border-radius: 50%;
+    /* Create 3 other buttons using box-shadow offset */
+    box-shadow: 
+        0 -12px 0 rgba(0,0,0,0.5), /* Top button */
+        10px -6px 0 rgba(0,0,0,0.5), /* Right button */
+        -10px -6px 0 rgba(0,0,0,0.5); /* Left button */
+}
+
+.joycon.left { border-radius: 30px 0 0 30px; } /* Left Joy-Con shape */
+.joycon.right { border-radius: 0 30px 30px 0; } /* Right Joy-Con shape (default) */
 
 @keyframes fall {
     0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.5; }
-    90% { opacity: 0.5; }
+    10% { opacity: 0.4; }
+    90% { opacity: 0.4; }
     100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
@@ -48,13 +73,24 @@ header {
     backdrop-filter: blur(5px);
 }
 
+/* GLITCH TITLE EFFECT */
 h1 { 
     font-family: 'Orbitron', sans-serif; 
-    font-size: 2.5rem; 
-    background: linear-gradient(90deg, #ff0055, #00f3ff); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-    text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+    font-size: 2.8rem; 
+    position: relative;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--neon-blue);
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--neon-blue); }
+  20% { text-shadow: -2px 2px var(--neon-pink), 2px -2px var(--neon-blue); transform: translate(2px, 0); }
+  22% { text-shadow: 2px -2px var(--neon-pink), -2px 2px var(--neon-blue); transform: translate(-2px, 0); }
+  24% { text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--neon-blue); transform: translate(0, 0); }
+  100% { text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--neon-blue); }
 }
 
 .subtitle { color: #aaa; font-size: 0.9rem; letter-spacing: 3px; margin-top: 5px; }

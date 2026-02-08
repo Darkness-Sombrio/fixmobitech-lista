@@ -17,38 +17,74 @@ body {
     font-family: 'Rajdhani', sans-serif;
 }
 
-/* Joy-Con Rain Animation Background */
+/* Rain Effect */
 .rain-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: 0; overflow: hidden;
-    filter: blur(2px);
+    filter: blur(1px);
 }
 
+/* JOY-CON REALISTA CSS */
 .joycon {
-    position: absolute; top: -100px;
-    width: 30px; height: 80px;
-    border-radius: 15px 15px 30px 30px; 
-    opacity: 0.3;
+    position: absolute; top: -120px;
+    width: 40px; height: 100px; /* Mas anchos, menos tubo */
+    background: #333;
+    opacity: 0.4;
     animation: fall linear infinite;
-    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.4);
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.3);
 }
+
+/* Rail Logic */
+.joycon.left { 
+    border-radius: 40px 0 0 40px; 
+    border-right: 6px solid rgba(0,0,0,0.6); /* Rail */
+}
+.joycon.right { 
+    border-radius: 0 40px 40px 0; 
+    border-left: 6px solid rgba(0,0,0,0.6); /* Rail */
+}
+
+/* Analog Stick */
 .joycon::before {
-    content: ''; position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
-    width: 14px; height: 14px; background: rgba(20,20,20, 0.6);
-    border-radius: 50%; border: 1px solid rgba(0,0,0,0.8);
+    content: ''; position: absolute;
+    width: 22px; height: 22px;
+    background: #222; border: 2px solid #111;
+    border-radius: 50%;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.4);
+    z-index: 2;
 }
+
+/* Buttons Cluster */
 .joycon::after {
-    content: ''; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-    width: 6px; height: 6px; background: rgba(0,0,0,0.5); border-radius: 50%;
-    box-shadow: 0 -12px 0 rgba(0,0,0,0.5), 10px -6px 0 rgba(0,0,0,0.5), -10px -6px 0 rgba(0,0,0,0.5);
+    content: ''; position: absolute;
+    width: 8px; height: 8px; background: #222; border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5); /* Center helps positioning */
 }
-.joycon.left { border-radius: 30px 0 0 30px; } 
-.joycon.right { border-radius: 0 30px 30px 0; }
+
+/* Specific Positions */
+.joycon.left::before { top: 20px; left: 50%; transform: translateX(-65%); } /* Stick Top */
+.joycon.left::after { /* D-Pad Bottom */
+    bottom: 25px; left: 50%; transform: translateX(-65%);
+    box-shadow: 
+        0 -14px 0 #222, /* Up */
+        14px -7px 0 #222, /* Right */
+        -14px -7px 0 #222; /* Left */
+    /* Base dot is Down */
+}
+
+.joycon.right::before { bottom: 25px; left: 50%; transform: translateX(-35%); } /* Stick Bottom */
+.joycon.right::after { /* ABXY Top */
+    top: 30px; left: 50%; transform: translateX(-35%);
+    box-shadow: 
+        0 -14px 0 #222, 
+        14px -7px 0 #222, 
+        -14px -7px 0 #222;
+}
 
 @keyframes fall {
-    0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.4; }
-    90% { opacity: 0.4; }
+    0% { transform: translateY(-120px) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
     100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
@@ -90,17 +126,33 @@ h1 {
 
 /* Stats HUD */
 .stats-bar {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px;
+    display: flex; justify-content: space-around; align-items: center; margin-bottom: 15px;
     background: rgba(30, 30, 40, 0.8); padding: 15px; border-radius: 12px; 
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    cursor: pointer; transition: 0.3s;
+    transition: 0.3s;
 }
-.stats-bar:hover { border-color: var(--neon-blue); box-shadow: 0 0 20px rgba(0, 243, 255, 0.3); }
 
 .stat-item { text-align: center; }
 .stat-val { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; display: block; color:#fff; }
 .stat-lbl { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+/* BIG REVIEW BUTTON */
+.btn-review-big {
+    display: block; width: 100%; margin: 15px 0;
+    background: linear-gradient(90deg, #222, #333);
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
+    font-family: 'Orbitron', sans-serif; font-size: 1.1rem;
+    padding: 15px; border-radius: 10px; cursor: pointer;
+    text-transform: uppercase; letter-spacing: 2px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.btn-review-big:hover {
+    background: var(--neon-blue); color: #000;
+    box-shadow: 0 0 20px var(--neon-blue); transform: scale(1.02);
+}
 
 /* Progress Bar */
 .progress-wrapper { margin-bottom: 25px; }
@@ -121,7 +173,7 @@ h1 {
 .controls-input:focus, .controls-select:focus { border-color: var(--neon-blue); }
 
 /* Game Grid */
-.game-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
+.game-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; min-height: 200px; }
 .game-card { 
     background: var(--card-bg); padding: 5px; border-radius: 10px; 
     border-left: 5px solid #444; 
@@ -133,10 +185,10 @@ h1 {
 .game-card.selected { background: rgba(50, 50, 70, 0.95); box-shadow: 0 0 15px rgba(255,255,255,0.1); }
 .game-card.focused { z-index: 10; transform: scale(1.05); box-shadow: 0 0 20px rgba(0,0,0,0.8); }
 
-/* NO SPACE EFFECT (Police Tape) */
+/* Playful No Space Tape */
 .game-card.no-space {
     opacity: 0.6; pointer-events: none; filter: grayscale(100%);
-    position: relative; overflow: hidden; border: 1px solid yellow !important;
+    position: relative; overflow: hidden; border: 1px solid #FFD700 !important;
 }
 .game-card.no-space::after {
     content: '⚠️ FALTARIA ESPACIO :C';
@@ -146,6 +198,7 @@ h1 {
     color: #000; font-weight: bold; padding: 5px 20px; font-size: 0.9rem;
     border: 2px solid #000; box-shadow: 0 5px 15px rgba(0,0,0,0.8);
     white-space: nowrap; width: 120%; text-align: center;
+    z-index: 5;
 }
 
 .card-content { flex: 1; padding: 10px; display: flex; flex-direction: column; justify-content: center; }

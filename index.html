@@ -18,7 +18,7 @@
         <a href="https://www.facebook.com/profile.php?id=100092204889914" target="_blank" class="btn-fb">👍 Síguenos en Facebook</a>
     </header>
 
-    <div class="stats-bar" onclick="viewOrder()">
+    <div class="stats-bar">
         <div class="stat-item">
             <span class="stat-lbl">Juegos</span>
             <span class="stat-val" id="selectedCount" style="color:var(--neon-blue)">0</span>
@@ -30,9 +30,6 @@
         <div class="stat-item">
             <span class="stat-lbl">Libre</span>
             <span class="stat-val" id="freeSpace" style="color:#4dff88">128.0 GB</span>
-        </div>
-        <div style="grid-column:1/-1; text-align:center; font-size:0.7rem; color:#aaa; margin-top:5px">
-            (Toca aquí para ver tu lista)
         </div>
     </div>
     
@@ -46,6 +43,9 @@
             <div style="display:flex;align-items:center"><span class="dot" style="background:#00f3ff"></span>Juegos</div>
         </div>
     </div>
+    
+    <!-- BIG BUTTON FOR REVIEW -->
+    <button class="btn-review-big" onclick="viewOrder()">📋 VER MI LISTA / EDITAR</button>
 
     <!-- Storage Config Row -->
     <div style="display:flex; gap:10px; margin-bottom:15px; background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">

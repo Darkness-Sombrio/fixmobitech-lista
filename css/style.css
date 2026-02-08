@@ -27,34 +27,23 @@ body {
 .joycon {
     position: absolute; top: -100px;
     width: 30px; height: 80px;
-    border-radius: 15px 15px 30px 30px; /* Slight curve at top */
+    border-radius: 15px 15px 30px 30px; 
     opacity: 0.3;
     animation: fall linear infinite;
-    /* 3D visual */
-    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.4), inset 2px 2px 5px rgba(255,255,255,0.2);
+    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.4);
 }
-
-/* Joy-Con Analog Stick */
 .joycon::before {
     content: ''; position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
     width: 14px; height: 14px; background: rgba(20,20,20, 0.6);
     border-radius: 50%; border: 1px solid rgba(0,0,0,0.8);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
-
-/* Joy-Con Buttons (simplified group) */
 .joycon::after {
     content: ''; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
     width: 6px; height: 6px; background: rgba(0,0,0,0.5); border-radius: 50%;
-    /* Create 3 other buttons using box-shadow offset */
-    box-shadow: 
-        0 -12px 0 rgba(0,0,0,0.5), /* Top button */
-        10px -6px 0 rgba(0,0,0,0.5), /* Right button */
-        -10px -6px 0 rgba(0,0,0,0.5); /* Left button */
+    box-shadow: 0 -12px 0 rgba(0,0,0,0.5), 10px -6px 0 rgba(0,0,0,0.5), -10px -6px 0 rgba(0,0,0,0.5);
 }
-
-.joycon.left { border-radius: 30px 0 0 30px; } /* Left Joy-Con shape */
-.joycon.right { border-radius: 0 30px 30px 0; } /* Right Joy-Con shape (default) */
+.joycon.left { border-radius: 30px 0 0 30px; } 
+.joycon.right { border-radius: 0 30px 30px 0; }
 
 @keyframes fall {
     0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
@@ -73,23 +62,19 @@ header {
     backdrop-filter: blur(5px);
 }
 
-/* GLITCH TITLE EFFECT */
 h1 { 
     font-family: 'Orbitron', sans-serif; 
     font-size: 2.8rem; 
-    position: relative;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 4px;
+    position: relative; color: #fff; text-transform: uppercase; letter-spacing: 4px;
     text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--neon-blue);
     animation: glitch 3s infinite;
 }
 
 @keyframes glitch {
   0% { text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--neon-blue); }
-  20% { text-shadow: -2px 2px var(--neon-pink), 2px -2px var(--neon-blue); transform: translate(2px, 0); }
-  22% { text-shadow: 2px -2px var(--neon-pink), -2px 2px var(--neon-blue); transform: translate(-2px, 0); }
-  24% { text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--neon-blue); transform: translate(0, 0); }
+  2% { transform: translate(2px,0); }
+  4% { transform: translate(-2px,0); }
+  6% { transform: translate(0,0); }
   100% { text-shadow: 2px 2px var(--neon-pink), -2px -2px var(--neon-blue); }
 }
 
@@ -130,17 +115,9 @@ h1 {
 .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; }
 
 /* Config Grid */
-.config-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px;
-    background: rgba(30, 30, 40, 0.6); padding: 20px; border-radius: 15px; margin-bottom: 25px;
-    border: 1px solid rgba(255,255,255,0.05);
-}
+.config-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; background: rgba(30, 30, 40, 0.6); padding: 20px; border-radius: 15px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.05); }
 .input-label { font-size: 0.75rem; color: #999; margin-bottom: 5px; display: block; }
-.controls-input, .controls-select {
-    background: #000; border: 1px solid #444; color: #fff; padding: 10px;
-    border-radius: 8px; font-family: 'Rajdhani', sans-serif; font-size: 1rem;
-    width: 100%; outline: none; transition: 0.3s;
-}
+.controls-input, .controls-select { background: #000; border: 1px solid #444; color: #fff; padding: 10px; border-radius: 8px; font-family: 'Rajdhani', sans-serif; font-size: 1rem; width: 100%; outline: none; transition: 0.3s; }
 .controls-input:focus, .controls-select:focus { border-color: var(--neon-blue); }
 
 /* Game Grid */
@@ -156,64 +133,45 @@ h1 {
 .game-card.selected { background: rgba(50, 50, 70, 0.95); box-shadow: 0 0 15px rgba(255,255,255,0.1); }
 .game-card.focused { z-index: 10; transform: scale(1.05); box-shadow: 0 0 20px rgba(0,0,0,0.8); }
 
-.card-content {
-    flex: 1; padding: 10px; display: flex; flex-direction: column; justify-content: center;
+/* NO SPACE EFFECT (Police Tape) */
+.game-card.no-space {
+    opacity: 0.6; pointer-events: none; filter: grayscale(100%);
+    position: relative; overflow: hidden; border: 1px solid yellow !important;
+}
+.game-card.no-space::after {
+    content: '⚠️ FALTARIA ESPACIO :C';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    background: repeating-linear-gradient(45deg, #FFD700, #FFD700 10px, #000 10px, #000 20px);
+    color: #000; font-weight: bold; padding: 5px 20px; font-size: 0.9rem;
+    border: 2px solid #000; box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+    white-space: nowrap; width: 120%; text-align: center;
 }
 
+.card-content { flex: 1; padding: 10px; display: flex; flex-direction: column; justify-content: center; }
 .game-info h3 { font-size: 1rem; margin-bottom: 5px; color: #eee; font-weight: 700; }
 .game-meta { font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
-.game-cat-badge { 
-    padding: 2px 8px; border-radius: 10px; color: #000; font-weight: bold; font-size: 0.7rem; 
-    text-transform: uppercase;
-}
+.game-cat-badge { padding: 2px 8px; border-radius: 10px; color: #000; font-weight: bold; font-size: 0.7rem; text-transform: uppercase; }
 .game-size { font-family: 'Orbitron'; font-weight: bold; font-size: 1rem; }
 
-.checkbox { 
-    width: 40px; display: flex; align-items: center; justify-content: center;
-    background: rgba(0,0,0,0.2); border-left: 1px solid rgba(255,255,255,0.05);
-}
-.check-circle { 
-    width: 24px; height: 24px; border: 2px solid #666; border-radius: 50%; 
-    transition: 0.2s; display: grid; place-items: center;
-}
+.checkbox { width: 40px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); border-left: 1px solid rgba(255,255,255,0.05); }
+.check-circle { width: 24px; height: 24px; border: 2px solid #666; border-radius: 50%; transition: 0.2s; display: grid; place-items: center; }
 .game-card.selected .check-circle { background: var(--neon-blue); border-color: var(--neon-blue); }
 .check-circle::after { content: '✓'; color: #000; font-weight: bold; font-size: 14px; display: none; }
 .game-card.selected .check-circle::after { display: block; }
 
 /* FAB */
-.fab-whatsapp {
-    position: fixed; bottom: 30px; right: 30px;
-    background: linear-gradient(45deg, #25D366, #128C7E);
-    width: 65px; height: 65px; border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.6);
-    cursor: pointer; z-index: 100; transition: 0.3s;
-    font-size: 35px; border: none; animation: pulse 2s infinite;
-}
+.fab-whatsapp { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(45deg, #25D366, #128C7E); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 5px 25px rgba(0,0,0,0.6); cursor: pointer; z-index: 100; transition: 0.3s; font-size: 35px; border: none; animation: pulse 2s infinite; }
 .fab-whatsapp:hover { transform: scale(1.1); }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
 /* Modal */
-.modal { 
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
-    display: none; justify-content: center; align-items: center; z-index: 1000;
-}
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 1000; }
 .modal.active { display: flex; animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.modal-content { 
-    background: #151520; padding: 25px; border-radius: 20px; width: 90%; max-width: 450px;
-    border: 1px solid #333; text-align: center;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-    max-height: 80vh; display: flex; flex-direction: column;
-}
-
+.modal-content { background: #151520; padding: 25px; border-radius: 20px; width: 90%; max-width: 450px; border: 1px solid #333; text-align: center; box-shadow: 0 0 50px rgba(0,0,0,0.5); max-height: 80vh; display: flex; flex-direction: column; }
 .modal-body { overflow-y: auto; text-align: left; padding: 10px; margin-bottom: 20px; border: 1px solid #333; border-radius: 10px; background: rgba(0,0,0,0.2); }
-.review-item { 
-    display: flex; justify-content: space-between; align-items: center; padding: 10px; 
-    border-bottom: 1px solid #333; font-size: 0.9rem;
-}
+.review-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #333; font-size: 0.9rem; }
 .review-item:last-child { border-bottom: none; }
 .btn-delete { color: #ff4d4d; cursor: pointer; font-weight: bold; padding: 5px; font-size: 1.2rem; }
-
 @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

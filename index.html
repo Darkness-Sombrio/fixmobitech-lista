@@ -1,0 +1,84 @@
+<!-- 
+   FixMobiTech Tool 
+   Copyright 2026 - All Rights Reserved 
+   Protected Code
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixMobiTech - Catálogo Seguro</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <style> :root { --neon-blue: #00f3ff; --neon-pink: #ff00ff; --bg-dark: #0a0a12; --card-bg: #151520; } * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; } body { background: var(--bg-dark); color: #fff; min-height: 100vh; padding-bottom: 50px; } .container { max-width: 800px; margin: 0 auto; padding: 15px; } header { text-align: center; padding: 30px 0; border-bottom: 1px solid #333; margin-bottom: 20px; background: linear-gradient(180deg, rgba(0,243,255,0.05) 0%, transparent 100%); } h1 { font-size: 2rem; background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 20px rgba(0,243,255,0.3); } .subtitle { color: #888; margin-top: 5px; font-size: 0.9rem; }  .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; background: var(--card-bg); padding: 15px; border-radius: 12px; border: 1px solid #333; } .stat-item { text-align: center; } .stat-val { font-size: 1.4rem; font-weight: bold; display: block; } .stat-lbl { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; } .text-blue { color: var(--neon-blue); } .text-pink { color: var(--neon-pink); } .text-green { color: #00ff88; } .text-red { color: #ff4444; }  .sd-config { background: #1a1a25; padding: 15px; border-radius: 12px; margin-bottom: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; border: 1px solid #333; } .sd-buttons { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; } .btn-sd { background: #2a2a35; border: 1px solid #444; color: #aaa; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: 0.2s; } .btn-sd:hover { background: #3a3a45; color: #fff; } .btn-sd.active { background: var(--neon-blue); color: #000; border-color: var(--neon-blue); font-weight: bold; } .sd-custom { display: flex; align-items: center; gap: 10px; margin-top: 5px; } .sd-input { background: #000; border: 1px solid #444; color: #fff; padding: 8px; width: 80px; text-align: center; font-size: 1.1rem; border-radius: 5px; }  .controls { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; } .search-box { flex: 1; min-width: 200px; position: relative; } .search-input { width: 100%; background: #222; border: 1px solid #444; padding: 12px 15px; border-radius: 25px; color: #fff; font-size: 1rem; outline: none; } .search-input:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0,243,255,0.2); } .btn { background: #333; border: none; padding: 10px 20px; border-radius: 25px; color: #fff; cursor: pointer; transition: 0.3s; font-weight: bold; } .btn-whatsapp { background: #25D366; color: #000; flex: 1; min-width: 150px; display: flex; align-items: center; justify-content: center; gap: 8px; } .btn-whatsapp:hover { background: #1ebc59; transform: scale(1.02); } .btn-reset { background: #ff4444; }  .game-list { display: grid; gap: 10px; } .game-card { background: var(--card-bg); padding: 12px 15px; border-radius: 10px; display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 15px; cursor: pointer; border: 1px solid transparent; transition: 0.2s; user-select: none; } .game-card:hover { background: #1e1e2d; } .game-card.selected { border-color: var(--neon-blue); background: rgba(0,243,255,0.05); } .checkbox { width: 22px; height: 22px; border: 2px solid #555; border-radius: 6px; display: grid; place-items: center; transition: 0.2s; } .game-card.selected .checkbox { background: var(--neon-blue); border-color: var(--neon-blue); } .checkbox::after { content: '✓'; color: #000; font-weight: bold; display: none; } .game-card.selected .checkbox::after { display: block; } .game-info h3 { font-size: 0.95rem; margin-bottom: 3px; } .game-meta { font-size: 0.8rem; color: #888; display: flex; gap: 10px; } .game-size { font-weight: bold; color: var(--neon-pink); } .game-cat { background: #333; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; }  .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 1000; } .modal.active { display: flex; } .modal-content { background: #1a1a25; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; border: 1px solid var(--neon-blue); text-align: center; } .modal-input { width: 100%; padding: 12px; margin: 15px 0; background: #0a0a12; border: 1px solid #444; color: #fff; border-radius: 8px; font-size: 1rem; } .btn-confirm { background: var(--neon-blue); color: #000; width: 100%; padding: 12px; margin-top: 10px; } @media (max-width: 600px) { .stats-bar { grid-template-columns: 1fr; } .header { padding: 20px 0; } } </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>FixMobiTech</h1>
+        <p class="subtitle">Catálogo Interactivo Nintendo Switch</p>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-val text-blue" id="selectedCount">0</span>
+            <span class="stat-lbl">Juegos</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-val text-pink" id="totalSize">0.0 GB</span>
+            <span class="stat-lbl">Peso Total</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-val text-green" id="freeSpace">128.0 GB</span>
+            <span class="stat-lbl">Libre en SD</span>
+        </div>
+    </div>
+
+    <div class="sd-config">
+        <label style="color:#888; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px">Selecciona Capacidad SD</label>
+        <div class="sd-buttons">
+            <button class="btn-sd active" onclick="setSD(128)">128 GB</button>
+            <button class="btn-sd" onclick="setSD(256)">256 GB</button>
+            <button class="btn-sd" onclick="setSD(512)">512 GB</button>
+            <button class="btn-sd" onclick="setSD(1024)">1 TB</button>
+        </div>
+        <div class="sd-custom">
+            <span>Manual:</span>
+            <input type="number" class="sd-input" id="sdSize" value="128">
+            <span>GB</span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" class="search-input" id="search" placeholder="🔍 Buscar juego...">
+        </div>
+        <button class="btn btn-whatsapp" onclick="openModal()">
+            <span>📱</span> Enviar Lista a FixMobiTech
+        </button>
+        <button class="btn btn-reset" onclick="resetSelection()">🗑️</button>
+    </div>
+
+    <div class="game-list" id="gameList">
+        <!-- Games will be injected here -->
+        <div style="text-align:center; padding:20px; color:#666">Cargando base de datos segura...</div>
+    </div>
+</div>
+
+<div class="modal" id="whatsappModal">
+    <div class="modal-content">
+        <h3>🚀 Enviar Pedido</h3>
+        <p style="color:#aaa; font-size:0.9rem">Ingresa tu nombre para identificar tu lista</p>
+        <input type="text" class="modal-input" id="clientName" placeholder="Tu Nombre">
+        <button class="btn btn-confirm" onclick="sendWhatsApp()">Enviar Ahora 📤</button>
+        <button class="btn" style="background:transparent; color:#888; margin-top:10px" onclick="closeModal()">Cancelar</button>
+    </div>
+</div>
+
+<!-- Cargar datos encriptados -->
+<script src="data.js"></script>
+
+<script>eval(atob("CiAgICAgICAgICAgIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2NvbnRleHRtZW51JywgZXZlbnQgPT4gZXZlbnQucHJldmVudERlZmF1bHQoKSk7CiAgICAgICAgICAgIGRvY3VtZW50Lm9ua2V5ZG93biA9IGZ1bmN0aW9uKGUpIHsKICAgICAgICAgICAgICAgIGlmKGUua2V5Q29kZSA9PSAxMjMpIHsgcmV0dXJuIGZhbHNlOyB9CiAgICAgICAgICAgICAgICBpZihlLmN0cmxLZXkgJiYgZS5zaGlmdEtleSAmJiBlLmtleUNvZGUgPT0gJ0knLmNoYXJDb2RlQXQoMCkpIHsgcmV0dXJuIGZhbHNlOyB9CiAgICAgICAgICAgICAgICBpZihlLmN0cmxLZXkgJiYgZS5zaGlmdEtleSAmJiBlLmtleUNvZGUgPT0gJ0MnLmNoYXJDb2RlQXQoMCkpIHsgcmV0dXJuIGZhbHNlOyB9CiAgICAgICAgICAgICAgICBpZihlLmN0cmxLZXkgJiYgZS5zaGlmdEtleSAmJiBlLmtleUNvZGUgPT0gJ0onLmNoYXJDb2RlQXQoMCkpIHsgcmV0dXJuIGZhbHNlOyB9CiAgICAgICAgICAgICAgICBpZihlLmN0cmxLZXkgJiYgZS5rZXlDb2RlID09ICdVJy5jaGFyQ29kZUF0KDApKSB7IHJldHVybiBmYWxzZTsgfQogICAgICAgICAgICB9CiAgICAgICAgIGNvbnN0IFBIT05FX05VTUJFUiA9ICI1MjgxMTUxMzkwMTgiOyBjb25zdCBLRVkgPSAiRml4TW9iaTIwMjZTZWN1cmVLZXkiOyBsZXQgR0FNRVMgPSBbXTsgbGV0IHNlbGVjdGVkID0gbmV3IFNldCgpOyBmdW5jdGlvbiBkZWNyeXB0KGRhdGEpIHsgdHJ5IHsgY29uc3Qgc3RyID0gYXRvYihkYXRhKTsgbGV0IHJlcyA9ICcnOyBmb3IobGV0IGk9MDsgaTxzdHIubGVuZ3RoOyBpKyspIHsgcmVzICs9IFN0cmluZy5mcm9tQ2hhckNvZGUoc3RyLmNoYXJDb2RlQXQoaSkgXiBLRVkuY2hhckNvZGVBdChpICUgS0VZLmxlbmd0aCkpOyB9IHJldHVybiBKU09OLnBhcnNlKHJlcyk7IH0gY2F0Y2goZSkgeyBjb25zb2xlLmVycm9yKCJFcnJvciBkZWNyeXB0aW5nIGRhdGEiLCBlKTsgcmV0dXJuIFtdOyB9IH0gZnVuY3Rpb24gaW5pdCgpIHsgaWYodHlwZW9mIFNFQ1VSRV9EQVRBICE9PSAndW5kZWZpbmVkJykgeyBHQU1FUyA9IGRlY3J5cHQoU0VDVVJFX0RBVEEpOyByZW5kZXJHYW1lcyhHQU1FUyk7IH0gZWxzZSB7IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdnYW1lTGlzdCcpLmlubmVySFRNTCA9ICc8ZGl2IHN0eWxlPSJjb2xvcjpyZWQ7dGV4dC1hbGlnbjpjZW50ZXIiPkVycm9yOiBObyBzZSBwdWRvIGNhcmdhciBsYSBiYXNlIGRlIGRhdG9zIHNlZ3VyYSAoZGF0YS5qcyBtaXNzaW5nKS48L2Rpdj4nOyB9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzZWFyY2gnKS5hZGRFdmVudExpc3RlbmVyKCdpbnB1dCcsIChlKSA9PiBmaWx0ZXJHYW1lcyhlLnRhcmdldC52YWx1ZSkpOyBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2RTaXplJykuYWRkRXZlbnRMaXN0ZW5lcignaW5wdXQnLCB1cGRhdGVTdGF0cyk7IGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2NvbnRleHRtZW51JywgZSA9PiBlLnByZXZlbnREZWZhdWx0KCkpOyBkb2N1bWVudC5vbmtleWRvd24gPSBlID0+IHsgaWYoZS5rZXlDb2RlID09IDEyMykgcmV0dXJuIGZhbHNlOyBpZihlLmN0cmxLZXkgJiYgJ3VVaUknLmluY2x1ZGVzKGUua2V5KSkgcmV0dXJuIGZhbHNlOyB9OyB9IGZ1bmN0aW9uIHJlbmRlckdhbWVzKGxpc3QpIHsgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2dhbWVMaXN0Jyk7IGNvbnRhaW5lci5pbm5lckhUTUwgPSBsaXN0Lm1hcChnID0+IHsgY29uc3QgaXNTZWwgPSBzZWxlY3RlZC5oYXMoZ1swXSk7IHJldHVybiBgIDxkaXYgY2xhc3M9ImdhbWUtY2FyZCAke2lzU2VsID8gJ3NlbGVjdGVkJyA6ICcnfSIgb25jbGljaz0idG9nZ2xlR2FtZSgnJHtnWzBdLnJlcGxhY2UoLycvZywgIlwnIil9JykiPiA8ZGl2IGNsYXNzPSJjaGVja2JveCI+PC9kaXY+IDxkaXYgY2xhc3M9ImdhbWUtaW5mbyI+IDxoMz4ke2dbMF19PC9oMz4gPGRpdiBjbGFzcz0iZ2FtZS1tZXRhIj4gPHNwYW4gY2xhc3M9ImdhbWUtY2F0Ij4ke2dbMl19PC9zcGFuPiA8c3Bhbj4ke2dbM119PC9zcGFuPiA8L2Rpdj4gPC9kaXY+IDxkaXYgY2xhc3M9ImdhbWUtc2l6ZSI+JHtnWzFdfSBHQjwvZGl2PiA8L2Rpdj5gOyB9KS5qb2luKCcnKTsgdXBkYXRlU3RhdHMoKTsgfSBmdW5jdGlvbiB0b2dnbGVHYW1lKG5hbWUpIHsgaWYoc2VsZWN0ZWQuaGFzKG5hbWUpKSBzZWxlY3RlZC5kZWxldGUobmFtZSk7IGVsc2Ugc2VsZWN0ZWQuYWRkKG5hbWUpOyBjb25zdCBjYXJkcyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy5nYW1lLWNhcmQnKTsgY2FyZHMuZm9yRWFjaChjYXJkID0+IHsgaWYoY2FyZC5xdWVyeVNlbGVjdG9yKCdoMycpLmlubmVyVGV4dCA9PT0gbmFtZSkgeyBjYXJkLmNsYXNzTGlzdC50b2dnbGUoJ3NlbGVjdGVkJyk7IH0gfSk7IHVwZGF0ZVN0YXRzKCk7IH0gZnVuY3Rpb24gc2V0U0Qoc2l6ZSkgeyBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2RTaXplJykudmFsdWUgPSBzaXplOyBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcuYnRuLXNkJykuZm9yRWFjaChiID0+IGIuY2xhc3NMaXN0LnJlbW92ZSgnYWN0aXZlJykpOyBjb25zdCBidG4gPSBBcnJheS5mcm9tKGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy5idG4tc2QnKSkuZmluZChiID0+IGIuaW5uZXJUZXh0LmluY2x1ZGVzKHNpemUgPj0gMTAwMCA/ICcxIFRCJyA6IHNpemUpKTsgaWYoYnRuKSBidG4uY2xhc3NMaXN0LmFkZCgnYWN0aXZlJyk7IHVwZGF0ZVN0YXRzKCk7IH0gZnVuY3Rpb24gZmlsdGVyR2FtZXMocXVlcnkpIHsgY29uc3QgbG93ZXIgPSBxdWVyeS50b0xvd2VyQ2FzZSgpOyBjb25zdCBmaWx0ZXJlZCA9IEdBTUVTLmZpbHRlcihnID0+IGdbMF0udG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhsb3dlcikpOyByZW5kZXJHYW1lcyhmaWx0ZXJlZCk7IH0gZnVuY3Rpb24gdXBkYXRlU3RhdHMoKSB7IGNvbnN0IHNkU2l6ZSA9IHBhcnNlRmxvYXQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3NkU2l6ZScpLnZhbHVlKSB8fCAxMjg7IGxldCB0b3RhbCA9IDA7IHNlbGVjdGVkLmZvckVhY2gobmFtZSA9PiB7IGNvbnN0IGcgPSBHQU1FUy5maW5kKHggPT4geFswXSA9PT0gbmFtZSk7IGlmKGcpIHRvdGFsICs9IGdbMV07IH0pOyBjb25zdCBmcmVlID0gc2RTaXplIC0gdG90YWw7IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzZWxlY3RlZENvdW50JykuaW5uZXJUZXh0ID0gc2VsZWN0ZWQuc2l6ZTsgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RvdGFsU2l6ZScpLmlubmVyVGV4dCA9IHRvdGFsLnRvRml4ZWQoMSkgKyAiIEdCIjsgY29uc3QgZnJlZUVsID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2ZyZWVTcGFjZScpOyBmcmVlRWwuaW5uZXJUZXh0ID0gZnJlZS50b0ZpeGVkKDEpICsgIiBHQiI7IGZyZWVFbC5jbGFzc05hbWUgPSAic3RhdC12YWwgIiArIChmcmVlID49IDAgPyAidGV4dC1ncmVlbiIgOiAidGV4dC1yZWQiKTsgfSBmdW5jdGlvbiBvcGVuTW9kYWwoKSB7IGlmKHNlbGVjdGVkLnNpemUgPT09IDApIHJldHVybiBhbGVydCgiU2VsZWNjaW9uYSBhbCBtZW5vcyB1biBqdWVnby4iKTsgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3doYXRzYXBwTW9kYWwnKS5jbGFzc0xpc3QuYWRkKCdhY3RpdmUnKTsgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NsaWVudE5hbWUnKS5mb2N1cygpOyB9IGZ1bmN0aW9uIGNsb3NlTW9kYWwoKSB7IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd3aGF0c2FwcE1vZGFsJykuY2xhc3NMaXN0LnJlbW92ZSgnYWN0aXZlJyk7IH0gZnVuY3Rpb24gcmVzZXRTZWxlY3Rpb24oKSB7IGlmKGNvbmZpcm0oJ8K/Qm9ycmFyIHNlbGVjY2nDs24/JykpIHsgc2VsZWN0ZWQuY2xlYXIoKTsgcmVuZGVyR2FtZXMoR0FNRVMpOyB9IH0gZnVuY3Rpb24gc2VuZFdoYXRzQXBwKCkgeyBjb25zdCBuYW1lID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NsaWVudE5hbWUnKS52YWx1ZS50cmltKCk7IGlmKCFuYW1lKSByZXR1cm4gYWxlcnQoIlBvciBmYXZvciBlc2NyaWJlIHR1IG5vbWJyZS4iKTsgY29uc3Qgc2QgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2RTaXplJykudmFsdWU7IGxldCB0b3RhbCA9IDA7IGxldCBsaXN0VGV4dCA9ICIiOyBjb25zdCBzZWxMaXN0ID0gWy4uLnNlbGVjdGVkXS5zb3J0KCk7IHNlbExpc3QuZm9yRWFjaCgobiwgaSkgPT4geyBjb25zdCBnID0gR0FNRVMuZmluZCh4ID0+IHhbMF0gPT09IG4pOyB0b3RhbCArPSBnWzFdOyBsaXN0VGV4dCArPSBgJHtpKzF9LiAke259ICgke2dbMV19IEdCKSUwQWA7IH0pOyBjb25zdCBmcmVlID0gcGFyc2VGbG9hdChzZCkgLSB0b3RhbDsgY29uc3Qgc3RhdHVzID0gZnJlZSA+PSAwID8gIuKchSBDQUJFIEVOIFNEIiA6IGDinYwgRkFMVEEgRVNQQUNJTyAoJHtmcmVlLnRvRml4ZWQoMSl9IEdCKWA7IGNvbnN0IG1zZyA9IGDwn46uICpQRURJRE8gRklYTU9CSVRFQ0gqJTBBYCArIGDwn5GkIENsaWVudGU6ICoke25hbWV9KiUwQWAgKyBg8J+SviBTRDogJHtzZH0gR0IlMEElMEFgICsgYCpMSVNUQSBERSBKVUVHT1M6KiUwQWAgKyBsaXN0VGV4dCArIGAlMEHwn5OKIFRvdGFsOiAke3NlbGVjdGVkLnNpemV9IGp1ZWdvc2AgKyBgJTBB8J+TpiBQZXNvOiAke3RvdGFsLnRvRml4ZWQoMSl9IEdCYCArIGAlMEEke3N0YXR1c31gOyB3aW5kb3cub3BlbihgaHR0cHM6IGNsb3NlTW9kYWwoKTsgfSBpbml0KCk7IA=="));</script>
+</body>
+</html>

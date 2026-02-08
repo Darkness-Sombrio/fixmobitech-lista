@@ -46,12 +46,26 @@
         </div>
     </div>
 
-    <div class="controls">
-        <div class="search-box">
-            <input type="text" class="search-input" id="search" placeholder="🔍 Buscar juego por nombre... (Usa flechas para navegar)">
+    <div class="controls-container">
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="search-input" id="search" placeholder="🔍 Buscar juego por nombre...">
+            </div>
+            <select class="sort-select" id="sortSelect">
+                <option value="name_asc">A - Z</option>
+                <option value="name_desc">Z - A</option>
+                <option value="size_desc">Peso (Mayor a Menor)</option>
+                <option value="size_asc">Peso (Menor a Mayor)</option>
+            </select>
         </div>
+        
+        <label style="color:#aaa; font-size:0.9rem; margin-bottom:10px; display:block">FILTRAR POR CATEGORÍA:</label>
+        <div class="category-filters" id="categoryFilters">
+            <!-- Loading Categories... -->
+        </div>
+
         <button class="btn-whatsapp" onclick="openModal()">
-            <span>📱</span> Enviar Lista a FixMobiTech
+            <span>📱</span> ENVIAR PEDIDO
         </button>
     </div>
 

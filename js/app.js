@@ -109,8 +109,8 @@ function renderGames(list) {
         const isSel = selected.has(g[0]);
         const safeName = g[0].replace(/'/g, "\\'");
         const color = g[5]; 
+        const emoji = g[2].split(" ")[0]; 
         const searchUrl = `https://www.google.com/search?tbm=isch&q=Nintendo+Switch+Cover+${encodeURIComponent(g[0])}`;
-        const emoji = g[2].split(" ")[0]; // Get Just Emoji
         
         let noSpaceClass = (!isSel && g[1] > currentFree) ? "no-space" : "";
 
@@ -118,8 +118,8 @@ function renderGames(list) {
         <div class="game-card ${isSel ? 'selected' : ''} ${noSpaceClass}" 
              onclick="toggleGame('${safeName}')">
             
-            <a href="${searchUrl}" target="_blank" class="cover-placeholder" style="border-bottom-color:${color}" onclick="event.stopPropagation()">
-                <span style="font-size:3rem">${emoji}</span>
+            <a href="${searchUrl}" target="_blank" class="cover-wrapper" onclick="event.stopPropagation()" style="text-decoration:none;color:inherit;">
+                <span class="cover-emoji">${emoji}</span>
                 <span class="cover-link">🖼️ VER PORTADA</span>
             </a>
 

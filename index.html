@@ -13,104 +13,100 @@
 <div class="container">
     <header>
         <h1>FixMobiTech</h1>
-        <p class="subtitle">Catálogo Interactivo Nintendo Switch</p>
-        <p class="welcome-msg">¡Bienvenido! Selecciona tus juegos favoritos para armar tu paquete.</p>
-        <div style="margin-top:10px; font-size:0.85rem; color:#888;">
-            <span style="color:var(--neon-green)">●</span> Chatbot disponible 24/7 (WhatsApp/Facebook)
-        </div>
+        <p class="subtitle">CATÁLOGO INTERACTIVO</p>
     </header>
 
+    <!-- Stats -->
     <div class="stats-bar">
         <div class="stat-item">
-            <span class="stat-val text-blue" id="selectedCount" style="color:var(--neon-blue)">0</span>
             <span class="stat-lbl">Juegos</span>
+            <span class="stat-val" id="selectedCount" style="color:var(--neon-blue)">0</span>
         </div>
         <div class="stat-item">
-            <span class="stat-val text-pink" id="totalSize" style="color:var(--neon-pink)">0.0 GB</span>
-            <span class="stat-lbl">Peso Aprox.</span>
+            <span class="stat-lbl">Peso Juegos</span>
+            <span class="stat-val" id="totalSize" style="color:var(--neon-pink)">0.0 GB</span>
         </div>
         <div class="stat-item">
-            <span class="stat-val text-green" id="freeSpace" style="color:var(--neon-green)">128.0 GB</span>
-            <span class="stat-lbl">Libre en SD</span>
+            <span class="stat-lbl">Libre SD</span>
+            <span class="stat-val" id="freeSpace" style="color:var(--neon-green)">128.0 GB</span>
         </div>
     </div>
     
-    <div class="progress-container">
-        <div class="progress-fill" id="sdProgress"></div>
-        <div class="progress-text" id="sdText" style="color:#fff;">0% Ocupado</div>
+    <!-- Progress User -->
+    <div class="progress-wrapper">
+        <div class="progress-container">
+            <div class="progress-fill" id="sdProgress"></div>
+        </div>
+        <div class="progress-legend">
+            <div class="legend-item"><span class="dot dot-sys"></span> Sistema (17GB)</div>
+            <div id="statsText" style="color:#fff;">Calculando...</div>
+            <div class="legend-item"><span class="dot dot-games"></span> Juegos</div>
+        </div>
     </div>
 
-    <div class="sd-config">
-        <label style="color:#aaa; text-transform:uppercase; font-size:0.9rem; letter-spacing:2px; margin-bottom:15px; display:block">Selecciona Capacidad SD</label>
-        <div class="sd-buttons">
-            <button class="btn-sd active" onclick="setSD(128)">128 GB</button>
-            <button class="btn-sd" onclick="setSD(256)">256 GB</button>
-            <button class="btn-sd" onclick="setSD(512)">512 GB</button>
-            <button class="btn-sd" onclick="setSD(1024)">1 TB</button>
+    <!-- Controls -->
+    <div class="config-grid">
+        <div class="input-group">
+            <label class="input-label">CAPACIDAD SD (GB)</label>
+            <input type="number" class="controls-input" id="sdSize" value="128">
         </div>
-        <div class="sd-custom" style="display:flex; justify-content:center; align-items:center; gap:10px; opacity:0.7">
-            <span>Manual:</span>
-            <input type="number" class="search-input" id="sdSize" value="128" style="width:100px; padding:8px;">
-            <span>GB</span>
-        </div>
-        <p style="margin-top:10px;color:#666;font-size:0.8rem;">* Los pesos mostrados son aproximados y pueden variar según actualizaciones y DLCs.</p>
-    </div>
-
-    <div class="controls-container">
-        <div class="search-section">
-            <div class="search-box">
-                <input type="text" class="search-input" id="search" placeholder="🔍 Buscar juego por nombre...">
-            </div>
-            <select class="sort-select" id="sortSelect">
-                <option value="name_asc">A - Z</option>
-                <option value="name_desc">Z - A</option>
-                <option value="size_desc">Peso (Mayor a Menor)</option>
-                <option value="size_asc">Peso (Menor a Mayor)</option>
+        <div class="input-group">
+            <label class="input-label">ORDENAR</label>
+            <select class="controls-select" id="sortSelect">
+                <option value="name_asc">Nombre (A-Z)</option>
+                <option value="name_desc">Nombre (Z-A)</option>
+                <option value="size_desc">Peso (Mayor)</option>
+                <option value="size_asc">Peso (Menor)</option>
             </select>
         </div>
-        
-        <label style="color:#aaa; font-size:0.9rem; margin-bottom:10px; display:block">FILTRAR POR CATEGORÍA:</label>
-        <div class="category-filters" id="categoryFilters">
-            <!-- Loading Categories... -->
+        <div class="input-group">
+            <label class="input-label">CATEGORÍA</label>
+            <select class="controls-select" id="categorySelect">
+                <!-- Dynamic -->
+            </select>
         </div>
+    </div>
 
-        <button class="btn-whatsapp" onclick="openModal()">
-            <span>📱</span> VERIFICAR PEDIDO Y ENVIAR
-        </button>
+    <div class="search-box">
+        <input type="text" class="search-input-big" id="search" placeholder="🔍 Buscar Juego...">
     </div>
 
     <div class="game-list" id="gameList">
-        <div style="grid-column:1/-1; text-align:center; padding:50px; color:#666">
-            <h2 style="font-family:'Orbitron'">Cargando base de datos...</h2>
-        </div>
+        <!-- Games -->
     </div>
     
-    <footer style="text-align:center; padding:40px 0 20px; color:#555; font-size:0.8rem; letter-spacing:1px; border-top:1px solid #222; margin-top:40px">
-        <p>Desarrollado por <span style="color:var(--neon-blue)">Roberto Carlos Flores Castillo</span></p>
-        <p style="margin-top:5px">© 2026 FixMobiTech - All Rights Reserved</p>
-        <p style="margin-top:5px; color:#444;">Facilitando tu lista de juegos. ¡Disfruta la estancia!</p>
+    <footer style="text-align:center; padding:30px; color:#555; font-size:0.8rem;">
+        <p>© 2026 FixMobiTech | * Pesos aproximados</p>
+        <p style="color:#888; margin-top:5px;">Soporte 24/7 vía WhatsApp</p>
     </footer>
+
+    <button class="fab-whatsapp" onclick="openModal()">🚀</button>
 </div>
 
+<!-- Modal -->
 <div class="modal" id="whatsappModal">
     <div class="modal-content">
-        <h3>🚀 Datos del Pedido</h3>
+        <h3 class="modal-title">FINALIZAR PEDIDO</h3>
         
-        <span class="modal-label">Nombre del Cliente</span>
-        <input type="text" class="modal-input" id="clientName" placeholder="Ej: Juan Pérez">
+        <div class="input-group">
+            <label class="input-label">CLIENTE</label>
+            <input type="text" class="controls-input" id="clientName" placeholder="Nombre completo">
+        </div>
         
-        <span class="modal-label">Modelo de Switch</span>
-        <select class="modal-select" id="clientModel">
-            <option value="V1/V2 (Normal)">V1 / V2 (Normal)</option>
-            <option value="OLED">OLED</option>
-            <option value="Lite">Lite</option>
-        </select>
+        <div class="input-group">
+            <label class="input-label">CONSOLA</label>
+            <div style="display:flex; gap:10px;">
+                <select class="controls-select" id="clientModel">
+                    <option value="V1/V2">Normal</option>
+                    <option value="OLED">OLED</option>
+                    <option value="Lite">Lite</option>
+                </select>
+                <input type="text" class="controls-input" id="clientColor" placeholder="Color" style="width:50%">
+            </div>
+        </div>
         
-        <span class="modal-label">Color de Consola</span>
-        <input type="text" class="modal-input" id="clientColor" placeholder="Ej: Neón (Roja/Azul), Gris, Blanca...">
-        
-        <button class="btn-confirm" onclick="sendWhatsApp()">ENVIAR WHATSAPP 📤</button>
-        <button class="btn" style="background:transparent; border:none; color:#888; cursor:pointer" onclick="closeModal()">Cancelar</button>
+        <button class="btn-confirm" onclick="sendWhatsApp()">ENVIAR POR WHATSAPP</button>
+        <button class="btn-confirm" style="background:transparent; border:1px solid #444; color:#888" onclick="closeModal()">CANCELAR</button>
     </div>
 </div>
 

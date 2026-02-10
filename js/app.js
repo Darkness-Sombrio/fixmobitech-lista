@@ -12,7 +12,20 @@ let activeCategory = 'all';
 let currentSort = 'size_desc'; 
 let selected = new Set();
 
-function init() {
+
+    // FILTRO: Eliminar juegos Online Only y actualizar Just Dance
+    const BLACKLIST = ["Apex Legends", "Fortnite", "Overwatch 2", "Warframe", "Rocket League", "Fall Guys", "F-Zero 99", "Palia", "Smite", "Disney Speedstorm"];
+    
+    GAMES_DATA = GAMES_DATA.filter(g => !BLACKLIST.includes(g[0]));
+    
+    // Actualizar Just Dance
+    const jdIndex = GAMES_DATA.findIndex(g => g[0].includes("Just Dance"));
+    if(jdIndex !== -1) {
+        GAMES_DATA[jdIndex][0] = "Just Dance (Todas las Versiones)";
+        GAMES_DATA[jdIndex][1] = 70.0;
+        GAMES_DATA[jdIndex][4] = "Ritmo (Próximamente)";
+    }
+
     createRain();
     renderCategoryOptions();
     applyFilters(); 
@@ -154,7 +167,8 @@ function toggleGame(name) {
         const game = GAMES_DATA.find(x => x[0] === name);
         if((currentTotal + sysReserved + game[1]) > sdSize) {
             alert("⚠️ MEMORIA LLENA: No cabe este juego.");
-            viewOrder(); return;
+            // viewOrder(); // Removed since button is gone
+            return;
         }
         selected.add(name);
     } else { selected.delete(name); }
@@ -213,7 +227,10 @@ function closeModal() { document.getElementById('whatsappModal').classList.remov
 
 function sendWhatsApp() {
     const name = document.getElementById('clientName').value;
-    const model = document.getElementById('clientModel').value;
+    // Get Checked Radio Button
+    const modelInput = document.querySelector('input[name="consoleModel"]:checked');
+    const model = modelInput ? modelInput.value : "Desconocido";
+    
     const preset = document.getElementById('sdPreset').value;
     const sdReal = SD_PRESETS[preset] || 119;
     
